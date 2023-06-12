@@ -3,3 +3,4 @@
   - [npm test](#npm-test)
   - [npm run build](#npm-run-build)
   - [npm run eject](#npm-run-eject)
+  - [npm run dev](#npm-run-dev)
