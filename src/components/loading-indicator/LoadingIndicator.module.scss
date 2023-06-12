@@ -1,0 +1,122 @@
+$dot-width: 10px !default;
+$dot-height: 10px !default;
+$dot-radius: $dot-width * .5 !default;
+
+$dot-color: theme("colors.primary.700") !default;
+$dot-bg-color: $dot-color !default;
+$dot-before-color: $dot-color !default;
+$dot-after-color: $dot-color !default;
+
+$dot-spacing: $dot-width + $dot-width * .5 !default;
+
+@mixin dot(
+  $width: $dot-width,
+  $height: $dot-height,
+  $radius: $dot-radius,
+  $bg-color: $dot-bg-color,
+  $color: $dot-color
+) {
+  width: $width;
+  height: $height;
+  border-radius: $radius;
+  background-color: $bg-color;
+  color: $color;
+}
+
+.dot-elastic {
+    position: relative;
+  
+    @include dot;
+  
+    animation: dot-elastic 1s infinite linear;
+  
+    &::before,
+    &::after {
+      content: '';
+      display: inline-block;
+      position: absolute;
+      top: 0;
+    }
+  
+    &::before {
+      left: - $dot-spacing;
+  
+      @include dot($bg-color: $dot-before-color);
+  
+      animation: dot-elastic-before 1s infinite linear;
+    }
+  
+    &::after {
+      left: $dot-spacing;
+  
+      @include dot($bg-color: $dot-after-color);
+  
+      animation: dot-elastic-after 1s infinite linear;
+    }
+  }
+  
+  @keyframes dot-elastic-before {
+    0% {
+      transform: scale(1, 1);
+    }
+  
+    25% {
+      transform: scale(1, 1.5);
+    }
+  
+    50% {
+      transform: scale(1, .67);
+    }
+  
+    75% {
+      transform: scale(1, 1);
+    }
+  
+    100% {
+      transform: scale(1, 1);
+    }
+  }
+  
+  @keyframes dot-elastic {
+    0% {
+      transform: scale(1, 1);
+    }
+  
+    25% {
+      transform: scale(1, 1);
+    }
+  
+    50% {
+      transform: scale(1, 1.5);
+    }
+  
+    75% {
+      transform: scale(1, 1);
+    }
+  
+    100% {
+      transform: scale(1, 1);
+    }
+  }
+  
+  @keyframes dot-elastic-after {
+    0% {
+      transform: scale(1, 1);
+    }
+  
+    25% {
+      transform: scale(1, 1);
+    }
+  
+    50% {
+      transform: scale(1, .67);
+    }
+  
+    75% {
+      transform: scale(1, 1.5);
+    }
+  
+    100% {
+      transform: scale(1, 1);
+    }
+  }

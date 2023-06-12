@@ -1,0 +1,153 @@
+.container {
+    display: flex;
+    width: 100%;
+    background: inherit;
+    justify-content: center;
+  }
+  
+  .button {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+    border: none;
+    padding: 0;
+    margin-top: 25px;
+    background-color: transparent;
+    position: relative;
+  
+    &::after {
+      position: absolute;
+      content: "";
+      height: 110%;
+      width: 40px;
+      z-index: 3;
+    }
+  }
+  
+  .buttonPrev {
+    &::after {
+      left: 23px;
+      background: linear-gradient(
+        90deg,
+        white,
+        hsla(0, 0%, 100%, 0.5),
+        hsla(0, 0%, 100%, 0)
+      );
+    }
+  }
+  
+  .buttonDisabled {
+    opacity: 0.5;
+    transition: all 0.3s ease;
+    pointer-events: none;
+  }
+  
+  .buttonNext {
+    &::after {
+      right: 23px;
+      background: linear-gradient(
+        270deg,
+        white,
+        hsla(0, 0%, 100%, 0.5) 70%,
+        hsla(0, 0%, 100%, 0)
+      );
+    }
+  }
+  
+  .dateListScrollable {
+    display: flex;
+    overflow-x: scroll;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    padding: 0 1.5rem;
+  
+    &::-webkit-scrollbar {
+      display: none;
+      -webkit-appearance: none;
+    }
+  }
+  
+  .monthContainer {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+  }
+  
+  .monthLabel {
+    align-self: flex-start;
+    z-index: 3;
+    position: sticky;
+    top: 0;
+    left: 0;
+    margin-left: 8px;
+    width: max-content;
+  }
+  
+  .dateDayItem {
+    cursor: pointer;
+    margin: 0 0.5rem;
+    line-height: 16px;
+    user-select: none;
+    letter-spacing: 0.002em;
+    min-height: 55px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;
+  }
+  
+  .dateDayItemMarked {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    margin: 0 0 0 5px;
+  }
+  
+  .daysContainer {
+    display: flex;
+    z-index: 1;
+    margin-top: 10px;
+  }
+
+  .dayLabel {
+    font-size: small;
+    color: theme("colors.gray.500")
+  }
+  
+  .markedLabel {
+    margin-top: 10px;
+  }
+  
+  .datesContainer {
+    display: flex;
+    overflow: hidden;
+    overflow-x: auto;
+  }
+  
+  .dateItem {
+    width: 43px;
+    height: 43px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: theme("borderRadius.2xl");
+    border: 1px solid;
+    border-color: theme("colors.gray.200");
+  }
+  .dateItemSelected {
+    background-color: theme("colors.primary.700");
+    border-color: transparent;
+  }
+  
+  .dateDayItem[aria-disabled="true"] {
+    cursor: not-allowed;
+    opacity: 0.3;
+  }
+  
+  .dateDayItem[aria-disabled="true"]:active {
+    pointer-events: none;
+  }

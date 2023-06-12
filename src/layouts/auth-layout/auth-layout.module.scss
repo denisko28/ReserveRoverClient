@@ -1,0 +1,22 @@
+.left-part {
+    min-width: 350px;
+    max-width: 400px;
+    height: 100%;
+    padding: 1rem 0;
+    margin: 0 10rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.right-part {
+    width: 50%;
+    height: 100%;
+    img {
+        opacity: 0.9;
+        object-fit: cover;
+        height: 100%;
+        object-position: 0 0; /* this centers the image horizontally */
+        overflow: hidden;
+    }
+}

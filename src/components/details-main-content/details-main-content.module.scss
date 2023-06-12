@@ -1,0 +1,23 @@
+.info-action-cont {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+
+    div {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        width: 100%;
+
+        .info-badge {
+            display: flex;
+            width: -moz-max-content;
+            width: max-content;
+            padding: 0.4rem 0.8rem;
+            border-radius: 9999px;
+            background-color: theme("colors.gray.100");
+        }
+    }
+}

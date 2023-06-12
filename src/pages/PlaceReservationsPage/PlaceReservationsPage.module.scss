@@ -1,0 +1,18 @@
+.place-reservs-page {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+
+    .header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 0;
+        width: calc(100% - 21rem);
+        position: fixed;
+        z-index: 12;
+        background-color: white;
+    }
+}

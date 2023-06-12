@@ -1,0 +1,24 @@
+.user-reserv-page {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    .cards-cont {
+        display: grid;
+        margin-top: 1rem;
+        gap: 1.5rem;
+        grid-template-columns: repeat(auto-fit, minmax(650px, 1fr));
+    }
+}
+
+.sidebar-modal {
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+
+    .table-cont {
+        border: 1px solid #e8e8e8;
+        border-radius: theme("borderRadius.xl");
+        overflow: overlay;
+    }
+}

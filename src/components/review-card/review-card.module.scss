@@ -1,0 +1,22 @@
+.review {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border: 1px solid;
+    border-color: theme('colors.gray.200');
+    padding: 1rem;
+    border-radius: 0.75rem;
+
+    .author {
+        display: flex;
+        flex-direction: row;
+        align-items:start;
+        gap: 1rem;
+    }
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}

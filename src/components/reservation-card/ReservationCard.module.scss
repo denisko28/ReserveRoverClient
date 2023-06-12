@@ -1,0 +1,37 @@
+.reserv-card {
+    display: grid;
+    grid-template-columns: 220px auto;
+    gap: 2rem;
+    border-radius: theme("borderRadius.2xl");
+    filter: drop-shadow(0px 0px 8px rgba(0, 0, 0, 0.1));
+    background-color: white;
+    padding: 1rem;
+
+
+    img {
+        min-width: 50%;
+        height: 160px;
+        object-fit: cover;
+        border-color: theme("colors.gray.300");
+        border-radius: theme("borderRadius.2xl");
+    }
+
+    .info {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+        width: 100%;
+        height: min-content;
+        padding: 0.5rem 0;
+
+        .info-badge {
+            display: flex;
+            width: -moz-max-content;
+            width: max-content;
+            padding: 0.3rem 0.6rem;
+            border-radius: 9999px;
+            font-size: smaller;
+            background-color: theme("colors.gray.100");
+        }
+    }
+}

@@ -1,0 +1,10 @@
+.react-tel-input {
+  .form-control {
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    padding-left: 3.5rem;
+    border-radius: theme("borderRadius.lg");
+    border-color: theme("colors.gray.300");
+    background-color: theme("colors.gray.50");
+  }
+}

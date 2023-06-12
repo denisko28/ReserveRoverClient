@@ -1,0 +1,56 @@
+.custom-navbar {
+    .collapse {
+        display: flex;
+        align-items: flex-end;
+        min-width: 255px;
+        height: 45px;
+        
+        ul {
+            width: 100%;
+
+            li {
+                display: flex;
+                align-items: center;
+                margin-right: 20px;
+
+                div {
+                    justify-content: space-between;
+                    height: 2.8rem;
+
+                    span {
+                        min-inline-size: max-content;
+                        font-size: smaller;
+                    }
+                }
+            }
+        }
+
+        .dropdown {
+            li {
+                margin-right: 0;
+                gap: 0.75rem;
+            }
+        }
+    }
+
+    .city-picker {
+        border-radius: 0.75rem;
+
+        // height: 100%;
+        span {
+            display: flex;
+            gap: 0.5rem;
+            padding-top: 0.4rem;
+            padding-bottom: 0.43rem;
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .collapse {
+        ul {
+            align-items: center;
+            justify-content: space-between;
+        }
+    }
+}

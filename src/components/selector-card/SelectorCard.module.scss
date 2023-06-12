@@ -1,0 +1,12 @@
+.selector-card {
+    background-color: theme("colors.primary.100");
+    border-radius: theme("borderRadius.2xl");
+    border: 1px solid;
+    border-color: transparent;
+    padding: 1rem;
+    width: 100%;
+}
+
+.selected {
+    border-color: theme("colors.primary.700");
+}
