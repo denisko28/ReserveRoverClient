@@ -7,10 +7,11 @@ const flowbiteTheme: CustomFlowbiteTheme = {
       color: {
         primary:
           "bg-primary-100 text-primary-800 dark:bg-primary-200 dark:text-primary-800 group-hover:bg-primary-200 dark:group-hover:bg-primary-300",
+        red: "bg-red-500 text-white"
       },
       size: {
         xl: "px-3 py-1 text-base rounded",
-      }
+      },
     },
     icon: {
       off: "rounded-full px-2 py-1",
@@ -18,8 +19,8 @@ const flowbiteTheme: CustomFlowbiteTheme = {
   },
   helperText: {
     root: {
-      base: "text-sm text-red-700"
-    }
+      base: "text-sm text-red-700",
+    },
   },
   textInput: {
     field: {
@@ -43,13 +44,14 @@ const flowbiteTheme: CustomFlowbiteTheme = {
   },
   label: {
     root: {
-      base: "text-base font-medium"
-    }
+      base: "text-base font-medium",
+    },
   },
   dropdown: {
     floating: {
       base: "p-1.5 z-10 w-fit rounded-xl divide-y divide-gray-100 shadow",
-      content: "rounded-md text-sm text-gray-700 dark:text-gray-200 max-h-52 overflow-y-scroll",
+      content:
+        "rounded-md text-sm text-gray-700 dark:text-gray-200 max-h-52 overflow-y-scroll",
       target: "w-fit dark:text-white",
     },
     content: "",
@@ -62,17 +64,18 @@ const flowbiteTheme: CustomFlowbiteTheme = {
   avatar: {
     root: {
       size: {
-        md: "w-11 h-11"
+        md: "w-11 h-11",
+        lg: "w-28 h-28"
       },
       img: {
         on: "object-cover rounded-2xl",
-      }
+      },
     },
   },
   carousel: {
     scrollContainer: {
-      base: "flex h-full snap-mandatory overflow-y-hidden overflow-x-scroll scroll-smooth rounded-lg snap-x indiana-scroll-container indiana-scroll-container--hide-scrollbars border border-gray-200"
-    }
+      base: "flex h-full snap-mandatory overflow-y-hidden overflow-x-scroll scroll-smooth rounded-lg snap-x indiana-scroll-container indiana-scroll-container--hide-scrollbars border border-gray-200",
+    },
   },
   navbar: {
     root: {
@@ -85,7 +88,7 @@ const flowbiteTheme: CustomFlowbiteTheme = {
   sidebar: {
     root: {
       base: "flex fixed top-0 left-0 z-20 flex-col flex-shrink-0 pt-1 h-full duration-75 border-r border-gray-200 w-72 lg:flex transition-width",
-    }
+    },
   },
   textarea: {
     base: "block w-full text-sm p-4 rounded-lg border disabled:cursor-not-allowed disabled:opacity-50",
@@ -94,6 +97,14 @@ const flowbiteTheme: CustomFlowbiteTheme = {
     toggle: {
       checked: {
         off: "!border-gray-200 !bg-gray-200 dark:!border-gray-600 dark:!bg-gray-700",
+      },
+    },
+  },
+  tab: {
+    tabpanel: "p-0",
+    tablist: {
+      tabitem: {
+        styles: { underline: { active: { on: "text-primary-800 border-b-2 border-primary-800" } } },
       },
     },
   },

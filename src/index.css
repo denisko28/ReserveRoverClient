@@ -183,32 +183,40 @@
   @apply hover:bg-gray-50 cursor-pointer !important;
 }
 
-.icon-16{
+.icon-16 {
   height: 1.4rem;
   width: 1.4rem;
 }
 
-.icon-24{
+.icon-24 {
   height: 1.45rem;
   width: 1.45rem;
 }
 
-.icon-48{
+.icon-48 {
   height: 3rem;
   width: 3rem;
 }
 
-.icon-filled svg{
+.icon-filled svg {
   fill: theme("colors.primary.700");
   stroke: theme("colors.primary.700");
 }
 
-.icon-button span{
-  gap: 0.6rem;
+.icon-button span {
+  gap: 0.5rem;
 }
 
 .text-4xl {
   line-height: 50px;
+}
+
+.badge-corner {
+  position: absolute;
+  top: -8px;
+  left: 12px;
+  padding: 0 0.35rem;
+  font-size: 0.9rem!important;
 }
 
 form {

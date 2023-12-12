@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from "react";
-import { Avatar, Button, Dropdown, Navbar, TextInput } from "flowbite-react";
+import { Avatar, Badge, Button, Dropdown, Navbar, TextInput } from "flowbite-react";
 import styles from './navbar.module.scss';
-import { HiChevronDown, HiChevronRight, HiOutlineBookmark, HiOutlineFlag, HiOutlineIdentification, HiOutlineKey, HiOutlineLocationMarker, HiOutlineLogout, HiOutlineSearch } from "react-icons/hi";
+import { HiChevronDown, HiChevronRight, HiOutlineBookmark, HiOutlineChatAlt2, HiOutlineFlag, HiOutlineIdentification, HiOutlineKey, HiOutlineLocationMarker, HiOutlineLogout, HiOutlineSearch, HiOutlineUsers } from "react-icons/hi";
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import Skeleton from "react-loading-skeleton";
@@ -11,10 +11,14 @@ import { useAppDispatch, useAppSelector } from "../../hooks/redux-hooks";
 import { City, fetchCities } from "../../redux/slices/citiesSlice";
 import { setUserCity } from '../../redux/slices/userInfoSlice';
 import SearchInput from "../search-input/search-input";
+import { HubConnectionBuilder, LogLevel } from "@microsoft/signalr";
+import { serverUrl } from "../../services/axios-config";
 
 const CustomNavbar: FC = function () {
   const { currentUser, isLoading, signOutRequest } = useAuth();
+  console.log(currentUser);
   const [searchString, setSearchString] = useState<string | null>(null);
+  const [messagesNum, setMessagesNum] = useState<number>(0);
   const navigator = useNavigate();
   const { isOpen, toggle } = useModal();
 
@@ -27,8 +31,30 @@ const CustomNavbar: FC = function () {
     dispatch(fetchCities());
   }, [dispatch])
 
+  useEffect(() => {
+    if (!currentUser)
+      return;
+
+    const startHubConnection = async () => {
+
+      const connection = new HubConnectionBuilder()
+        .withUrl(serverUrl + "/chatHub", {
+          accessTokenFactory: async () =>
+            `${await currentUser.getIdToken()}`
+        })
+        .configureLogging(LogLevel.Information)
+        .build();
+
+      connection.on("ReceiveMessage", (_: any) => {
+        setMessagesNum(prevMessagesNum => prevMessagesNum + 1);
+      });
+      await connection.start();
+    }
+    startHubConnection().catch(console.error);
+  }, [currentUser]);
+
   const onSignOut = () => {
-    signOutRequest();
+    signOutRequest().then(() => navigator("/"));
   }
 
   const onSearchClick = () => {
@@ -74,7 +100,7 @@ const CustomNavbar: FC = function () {
         <Navbar.Collapse className={styles["collapse"]}>
           {
             isLoading
-              ? <Skeleton containerClassName="w-full" count={2} />
+              ? <Skeleton style={{width: 439}} count={2} />
               : (currentUser
                 ? <div className='block md:flex gap-3'>
                   <Navbar.Link href='/user-reservations' className='w-screen md:w-auto'>
@@ -89,7 +115,23 @@ const CustomNavbar: FC = function () {
                       <span >Збережені</span>
                     </div>
                   </Navbar.Link>
-                  <div className='flex md:order-2'>
+                  <Navbar.Link href='/friends' className='w-screen md:w-auto'>
+                    <div className='flex md:flex-col items-center'>
+                      <HiOutlineUsers className="icon-24" />
+                      <span>Друзі</span>
+                    </div>
+                  </Navbar.Link>
+                  <Navbar.Link href='/chats' className='w-screen md:w-auto'>
+                    <div className='flex md:flex-col items-center'>
+                      <div className="relative">
+                        <HiOutlineChatAlt2 className="icon-24" />
+                        {messagesNum > 0 &&
+                          <Badge color="red" className="badge-corner">{messagesNum}</Badge>}
+                      </div>
+                      <span>Повідомлення</span>
+                    </div>
+                  </Navbar.Link>
+                  <div className='flex md:order-2 w-11'>
                     <Dropdown
                       arrowIcon={false}
                       inline={true}
@@ -97,7 +139,7 @@ const CustomNavbar: FC = function () {
                       label={
                         <Avatar
                           alt='User settings'
-                          img={(currentUser?.photoURL) ?? ""}
+                          img={(currentUser.photoURL) ?? ""}
                         />
                       }>
                       <Dropdown.Header>

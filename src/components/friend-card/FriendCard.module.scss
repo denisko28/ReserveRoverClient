@@ -1,0 +1,31 @@
+.friend-card {
+    display: grid;
+    grid-template-columns: 120px auto;
+    column-gap: 1rem;
+    align-items: center;
+
+    &:hover {
+        background-color: theme("colors.gray.50");
+        // .button-hover-primary {
+        //     background-color: theme("colors.primary.700");
+        // }
+    }
+
+    img {
+        width: 100%;
+        height: 120px;
+        background-color: theme("colors.gray.100");
+        object-fit:cover;
+        border: 1px solid;
+        border-color: theme("colors.gray.300");
+        border-radius: theme("borderRadius.xl");
+    }
+
+    .info {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        width: 100%;
+        height: min-content;
+    }
+}

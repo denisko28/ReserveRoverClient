@@ -32,6 +32,8 @@ import PlaceReservationsPage from "./pages/PlaceReservationsPage/PlaceReservatio
 import ModerationPage from "./pages/ModerationPage/ModerationPage";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import FriendsPage from "./pages/FriendsPage/FriendsPage";
+import ChatsPage from "./pages/ChatsPage/ChatsPage";
 
 const container = document.getElementById("root");
 
@@ -60,6 +62,15 @@ root.render(
                   </Route>
                   <Route element={<RequireAuth allowedRoles={[UserRoles.User]} />}>
                     <Route path="/user-saved" element={<UserSavedPage />} />
+                  </Route>
+                  <Route element={<RequireAuth allowedRoles={[UserRoles.User]} />}>
+                    <Route path="/friends" element={<FriendsPage />} />
+                  </Route>
+                  <Route element={<RequireAuth allowedRoles={[UserRoles.User]} />}>
+                    <Route path="/chats" element={<ChatsPage />} />
+                  </Route>
+                  <Route element={<RequireAuth allowedRoles={[UserRoles.User]} />}>
+                    <Route path="/chat/:chatId" element={<ChatsPage />} />
                   </Route>
                 </Route>
                 <Route element={<SidebarLayout />}>

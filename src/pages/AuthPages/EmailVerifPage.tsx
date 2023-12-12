@@ -38,7 +38,8 @@ const EmailVerifPage: FC = function () {
             Відправити лист повторно
           </Button>
         }
-        <Button color="gray" size="lg" className="w-full" onClick={() => signOutRequest()}>
+        <Button color="gray" size="lg" className="w-full"
+          onClick={() => signOutRequest().then(() => navigator("/"))}>
           Повернутися до входу
         </Button>
       </form>

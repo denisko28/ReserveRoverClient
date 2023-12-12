@@ -8,9 +8,12 @@
     "yarn": ">= 1"
   },
   "dependencies": {
+    "@chatscope/chat-ui-kit-react": "^1.10.1",
+    "@chatscope/chat-ui-kit-styles": "^1.4.0",
     "@denisko28/timeline2": "^1.2.2",
     "@heroicons/react": "^2.0.17",
     "@meinefinsternis/react-horizontal-date-picker": "^1.0.1",
+    "@microsoft/signalr": "^7.0.12",
     "@reduxjs/toolkit": "^1.9.5",
     "@types/date-fns": "^2.6.0",
     "@types/react-redux": "^7.1.25",

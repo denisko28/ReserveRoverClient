@@ -17,6 +17,7 @@ import { getPlaceDetails } from "../../redux/slices/placeDetailsSlice";
 import LoadingIndicator from "../../components/loading-indicator/LoadingIndicator";
 import { getManagersPlaceInfo } from "../../redux/slices/userInfoSlice";
 import useAuth from "../../hooks/useAuth";
+import { toast } from "react-toastify";
 
 const generateTimeOptions = () => {
   const startTime = set(new Date(), { hours: 0, minutes: 0 });
@@ -88,7 +89,6 @@ const MyPlacePage: FC = function () {
   });
 
   const onSubmit = async (data: any) => {
-    debugger;
     const placeParams = { ...data };
     placeParams.mainImageUrl = placeImages[0];
     placeParams.imageUrls = placeImages;
@@ -100,9 +100,17 @@ const MyPlacePage: FC = function () {
 
     debugger;
     if (action === "create") {
-      dispatch(createPlace(placeParams));
-      if(currentUser)
-        dispatch(getManagersPlaceInfo(await currentUser.uid));
+      toast.promise(
+        createPlace(placeParams),
+        {
+          pending: 'Обробка',
+          success: 'Заклад успішно створено 👌',
+          error: 'Помилка! Не вдалося створити заклад 🤯'
+        }
+      ).then(() => {
+        if (currentUser)
+          dispatch(getManagersPlaceInfo(currentUser.uid));
+      });
     }
   }
 

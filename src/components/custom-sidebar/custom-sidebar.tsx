@@ -15,6 +15,7 @@ import useAuth, { UserRoles } from "../../hooks/useAuth";
 import Skeleton from "react-loading-skeleton";
 import { IconType } from "react-icons";
 import { useAppSelector } from "../../hooks/redux-hooks";
+import { useNavigate } from "react-router";
 
 type SidebarItemData = {
   href: string;
@@ -41,6 +42,7 @@ const CustomSidebar: FC = function () {
   const [currentPage, setCurrentPage] = useState("");
   const { currentUser, isLoading, signOutRequest } = useAuth();
   const { role } = useAppSelector(state => state.userInfo);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const newPage = window.location.pathname;
@@ -116,7 +118,7 @@ const CustomSidebar: FC = function () {
               )
             }
             <Sidebar.Item
-              onClick={() => signOutRequest()}
+              onClick={() => signOutRequest().then(() => navigate("/"))}
               icon={HiOutlineLogout}
             >
               Вихід

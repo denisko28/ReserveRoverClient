@@ -85,16 +85,13 @@ export const loadMore = createAsyncThunk(
   }
 );
 
-export const createPlace = createAsyncThunk(
-  "places/createPlace",
-  async (placeParams: NewPlaceParams) => {
-    const response = await axiosInstance.post(
-      "/places/manager/createPlace",
-      placeParams
-    );
-    return response.data;
-  }
-);
+export const createPlace = async (placeParams: NewPlaceParams) => {
+  const response = await axiosInstance.post(
+    "/places/manager/createPlace",
+    placeParams
+  );
+  return response.data;
+};
 
 export const uploadPlaceImg = createAsyncThunk(
   "places/uploadImage",
@@ -149,17 +146,6 @@ const placesSlice = createSlice({
         if (action.payload.length < PAGE_SIZE) state.noMore = true;
       })
       .addCase(loadMore.rejected, (state, action) => {
-        state.status = "failed";
-        state.error = action.error.message;
-      })
-
-      .addCase(createPlace.pending, (state) => {
-        state.status = "loading";
-      })
-      .addCase(createPlace.fulfilled, (state) => {
-        state.status = "succeeded";
-      })
-      .addCase(createPlace.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message;
       })

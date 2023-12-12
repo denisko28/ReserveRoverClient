@@ -26,9 +26,9 @@ const InitialRoute: FC = function () {
             return <Navigate to="/place-reservs" replace />;
         case UserRoles.User:
             return <Navigate to="/main" replace />;
+        default:
+            return <Navigate to="/main" replace />;
     }
-
-    return <Outlet />;
 }
 
 export default InitialRoute

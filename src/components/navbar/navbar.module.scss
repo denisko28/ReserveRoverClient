@@ -2,7 +2,7 @@
     .collapse {
         display: flex;
         align-items: flex-end;
-        min-width: 255px;
+        min-width: fit-content;
         height: 45px;
         
         ul {

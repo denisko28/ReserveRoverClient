@@ -1,0 +1,11 @@
+.friends-page {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    .cards-cont {
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    }
+}

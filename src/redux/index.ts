@@ -15,6 +15,7 @@ import placeDetailsReducer from "./slices/placeDetailsSlice";
 import userRoleReducer from "./slices/userInfoSlice";
 import citiesReducer from "./slices/citiesSlice";
 import rservationsReducer from "./slices/reservationSlice";
+import friendsReducer from "./slices/friendsSlice";
 import moderationsReducer from "./slices/moderationsSlice";
 import tableSetsReducer from "./slices/tableSetsSlice";
 
@@ -29,6 +30,7 @@ const comboReducer = combineReducers({
   placeDetails: placeDetailsReducer,
   cities: citiesReducer,
   reservations: rservationsReducer,
+  friends: friendsReducer,
   moderations: moderationsReducer,
   tableSets: tableSetsReducer
 });
